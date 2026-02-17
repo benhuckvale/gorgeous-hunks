@@ -73,3 +73,15 @@ export interface ParseOptions {
   /** Number of context lines (default: 3, matching git's default) */
   contextLines?: number;
 }
+
+/**
+ * A group of hunks that should be committed together
+ */
+export interface HunkGroup {
+  /** Human-readable label for this group */
+  label: string;
+  /** The hunks in this group */
+  hunks: Hunk[];
+  /** Generate a patch string for this group */
+  toPatch(): string;
+}
