@@ -85,3 +85,14 @@ export interface HunkGroup {
   /** Generate a patch string for this group */
   toPatch(): string;
 }
+
+/**
+ * Result of applying a patch
+ */
+export interface ApplyResult {
+  success: boolean;
+  /** Any error message if success is false */
+  error?: string;
+  /** Files that had conflicts (with --reject) */
+  rejectedFiles?: string[];
+}
