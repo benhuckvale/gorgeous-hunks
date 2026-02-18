@@ -30,7 +30,7 @@ function makeParsedDiff(files: FileDiff[]): ParsedDiff {
 describe('summarizeHunk', () => {
   it('describes a pure addition with tag detection', () => {
     const hunk = makeHunk({ lines: [{ type: 'add', content: 'async function load() {' }] });
-    expect(summarizeHunk(hunk)).toBe('adds 1 line(s) (function definition) (async)');
+    expect(summarizeHunk(hunk)).toBe('adds 1 line(s) [function definition, async]');
   });
 
   it('describes a pure removal', () => {
@@ -77,8 +77,8 @@ describe('formatHunkList', () => {
     expect(formatHunkList(hunks)).toBe(
 `| ID | File | Lines | Summary |
 |----|------|-------|---------|
-| src/app.ts:0 | src/app.ts | 10-12 | adds 1 line(s) (imports) |
-| src/app.ts:1 | src/app.ts | 42-43 | removes 1 line(s) (logging) |`
+| src/app.ts:0 | src/app.ts | 10-12 | adds 1 line(s) [imports] |
+| src/app.ts:1 | src/app.ts | 42-43 | removes 1 line(s) [logging] |`
     );
   });
 });
